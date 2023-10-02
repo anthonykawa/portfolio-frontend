@@ -8,15 +8,18 @@ type GeneratedSubscription<InputType, OutputType> = string & {
   __generatedSubscriptionOutput: OutputType;
 };
 
-export const onCreateArticle = /* GraphQL */ `subscription OnCreateArticle($filter: ModelSubscriptionArticleFilterInput) {
-  onCreateArticle(filter: $filter) {
+export const onCreateArticle = /* GraphQL */ `subscription OnCreateArticle(
+  $filter: ModelSubscriptionArticleFilterInput
+  $owner: String
+) {
+  onCreateArticle(filter: $filter, owner: $owner) {
     id
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -24,15 +27,18 @@ export const onCreateArticle = /* GraphQL */ `subscription OnCreateArticle($filt
   APITypes.OnCreateArticleSubscriptionVariables,
   APITypes.OnCreateArticleSubscription
 >;
-export const onUpdateArticle = /* GraphQL */ `subscription OnUpdateArticle($filter: ModelSubscriptionArticleFilterInput) {
-  onUpdateArticle(filter: $filter) {
+export const onUpdateArticle = /* GraphQL */ `subscription OnUpdateArticle(
+  $filter: ModelSubscriptionArticleFilterInput
+  $owner: String
+) {
+  onUpdateArticle(filter: $filter, owner: $owner) {
     id
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -40,15 +46,18 @@ export const onUpdateArticle = /* GraphQL */ `subscription OnUpdateArticle($filt
   APITypes.OnUpdateArticleSubscriptionVariables,
   APITypes.OnUpdateArticleSubscription
 >;
-export const onDeleteArticle = /* GraphQL */ `subscription OnDeleteArticle($filter: ModelSubscriptionArticleFilterInput) {
-  onDeleteArticle(filter: $filter) {
+export const onDeleteArticle = /* GraphQL */ `subscription OnDeleteArticle(
+  $filter: ModelSubscriptionArticleFilterInput
+  $owner: String
+) {
+  onDeleteArticle(filter: $filter, owner: $owner) {
     id
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -56,28 +65,17 @@ export const onDeleteArticle = /* GraphQL */ `subscription OnDeleteArticle($filt
   APITypes.OnDeleteArticleSubscriptionVariables,
   APITypes.OnDeleteArticleSubscription
 >;
-export const onCreateAuthor = /* GraphQL */ `subscription OnCreateAuthor($filter: ModelSubscriptionAuthorFilterInput) {
-  onCreateAuthor(filter: $filter) {
+export const onCreateAuthor = /* GraphQL */ `subscription OnCreateAuthor(
+  $filter: ModelSubscriptionAuthorFilterInput
+  $owner: String
+) {
+  onCreateAuthor(filter: $filter, owner: $owner) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -85,28 +83,17 @@ export const onCreateAuthor = /* GraphQL */ `subscription OnCreateAuthor($filter
   APITypes.OnCreateAuthorSubscriptionVariables,
   APITypes.OnCreateAuthorSubscription
 >;
-export const onUpdateAuthor = /* GraphQL */ `subscription OnUpdateAuthor($filter: ModelSubscriptionAuthorFilterInput) {
-  onUpdateAuthor(filter: $filter) {
+export const onUpdateAuthor = /* GraphQL */ `subscription OnUpdateAuthor(
+  $filter: ModelSubscriptionAuthorFilterInput
+  $owner: String
+) {
+  onUpdateAuthor(filter: $filter, owner: $owner) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -114,28 +101,17 @@ export const onUpdateAuthor = /* GraphQL */ `subscription OnUpdateAuthor($filter
   APITypes.OnUpdateAuthorSubscriptionVariables,
   APITypes.OnUpdateAuthorSubscription
 >;
-export const onDeleteAuthor = /* GraphQL */ `subscription OnDeleteAuthor($filter: ModelSubscriptionAuthorFilterInput) {
-  onDeleteAuthor(filter: $filter) {
+export const onDeleteAuthor = /* GraphQL */ `subscription OnDeleteAuthor(
+  $filter: ModelSubscriptionAuthorFilterInput
+  $owner: String
+) {
+  onDeleteAuthor(filter: $filter, owner: $owner) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -143,15 +119,17 @@ export const onDeleteAuthor = /* GraphQL */ `subscription OnDeleteAuthor($filter
   APITypes.OnDeleteAuthorSubscriptionVariables,
   APITypes.OnDeleteAuthorSubscription
 >;
-export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
-  onCreateUser(filter: $filter) {
+export const onCreateUser = /* GraphQL */ `subscription OnCreateUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $owner: String
+) {
+  onCreateUser(filter: $filter, owner: $owner) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -159,15 +137,17 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
   APITypes.OnCreateUserSubscriptionVariables,
   APITypes.OnCreateUserSubscription
 >;
-export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
-  onUpdateUser(filter: $filter) {
+export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $owner: String
+) {
+  onUpdateUser(filter: $filter, owner: $owner) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -175,15 +155,17 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
   APITypes.OnUpdateUserSubscriptionVariables,
   APITypes.OnUpdateUserSubscription
 >;
-export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
-  onDeleteUser(filter: $filter) {
+export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $owner: String
+) {
+  onDeleteUser(filter: $filter, owner: $owner) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }

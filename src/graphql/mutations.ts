@@ -17,9 +17,9 @@ export const createArticle = /* GraphQL */ `mutation CreateArticle(
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -36,9 +36,9 @@ export const updateArticle = /* GraphQL */ `mutation UpdateArticle(
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -55,9 +55,9 @@ export const deleteArticle = /* GraphQL */ `mutation DeleteArticle(
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -71,25 +71,11 @@ export const createAuthor = /* GraphQL */ `mutation CreateAuthor(
 ) {
   createAuthor(input: $input, condition: $condition) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -103,25 +89,11 @@ export const updateAuthor = /* GraphQL */ `mutation UpdateAuthor(
 ) {
   updateAuthor(input: $input, condition: $condition) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -135,25 +107,11 @@ export const deleteAuthor = /* GraphQL */ `mutation DeleteAuthor(
 ) {
   deleteAuthor(input: $input, condition: $condition) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -167,12 +125,11 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
 ) {
   createUser(input: $input, condition: $condition) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -186,12 +143,11 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
 ) {
   updateUser(input: $input, condition: $condition) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -205,12 +161,11 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
 ) {
   deleteUser(input: $input, condition: $condition) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }

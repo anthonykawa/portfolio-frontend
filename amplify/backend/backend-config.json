@@ -1,12 +1,26 @@
 {
   "api": {
     "portfolio": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "portfolio"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authportfolio"
+              }
             }
           ],
           "defaultAuthentication": {
@@ -55,5 +69,6 @@
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
     }
-  }
+  },
+  "function": {}
 }

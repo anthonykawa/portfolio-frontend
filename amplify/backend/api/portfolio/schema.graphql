@@ -1,23 +1,19 @@
-type Article @model @auth(rules: [{allow: public}]) {
+type Article @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
   id: ID!
   title: String!
   description: String!
   body: String
-  authorID: ID! @index(name: "byAuthor")
 }
 
-type Author @model @auth(rules: [{allow: public}]) {
+type Author @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
   id: ID!
-  User: User @hasOne
-  Articles: [Article] @hasMany(indexName: "byAuthor", fields: ["id"])
   jobTitle: String!
   company: String
 }
 
-type User @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
   id: ID!
-  firstName: String!
-  lastName: String!
-  email: AWSEmail!
-  username: String!
+  email: String!
+  imageURI: String
 }
+ 

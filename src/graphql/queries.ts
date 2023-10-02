@@ -14,9 +14,9 @@ export const getArticle = /* GraphQL */ `query GetArticle($id: ID!) {
     title
     description
     body
-    authorID
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -35,9 +35,9 @@ export const listArticles = /* GraphQL */ `query ListArticles(
       title
       description
       body
-      authorID
       createdAt
       updatedAt
+      owner
       __typename
     }
     nextToken
@@ -48,60 +48,14 @@ export const listArticles = /* GraphQL */ `query ListArticles(
   APITypes.ListArticlesQueryVariables,
   APITypes.ListArticlesQuery
 >;
-export const articlesByAuthorID = /* GraphQL */ `query ArticlesByAuthorID(
-  $authorID: ID!
-  $sortDirection: ModelSortDirection
-  $filter: ModelArticleFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  articlesByAuthorID(
-    authorID: $authorID
-    sortDirection: $sortDirection
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      title
-      description
-      body
-      authorID
-      createdAt
-      updatedAt
-      __typename
-    }
-    nextToken
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.ArticlesByAuthorIDQueryVariables,
-  APITypes.ArticlesByAuthorIDQuery
->;
 export const getAuthor = /* GraphQL */ `query GetAuthor($id: ID!) {
   getAuthor(id: $id) {
     id
-    User {
-      id
-      firstName
-      lastName
-      email
-      username
-      createdAt
-      updatedAt
-      __typename
-    }
-    Articles {
-      nextToken
-      __typename
-    }
     jobTitle
     company
     createdAt
     updatedAt
-    authorUserId
+    owner
     __typename
   }
 }
@@ -118,7 +72,7 @@ export const listAuthors = /* GraphQL */ `query ListAuthors(
       company
       createdAt
       updatedAt
-      authorUserId
+      owner
       __typename
     }
     nextToken
@@ -132,12 +86,11 @@ export const listAuthors = /* GraphQL */ `query ListAuthors(
 export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   getUser(id: $id) {
     id
-    firstName
-    lastName
     email
-    username
+    imageURI
     createdAt
     updatedAt
+    owner
     __typename
   }
 }
@@ -150,12 +103,11 @@ export const listUsers = /* GraphQL */ `query ListUsers(
   listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      firstName
-      lastName
       email
-      username
+      imageURI
       createdAt
       updatedAt
+      owner
       __typename
     }
     nextToken
