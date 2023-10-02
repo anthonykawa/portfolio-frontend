@@ -1,5 +1,8 @@
 import _ from 'lodash';
-import { withAuthenticator, WithAuthenticatorProps } from '@aws-amplify/ui-react';
+import {
+  withAuthenticator, 
+  // WithAuthenticatorProps 
+} from '@aws-amplify/ui-react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listArticles } from '../graphql/queries';
 import { Article } from '../components/article';
@@ -10,7 +13,11 @@ import { GraphQLResult } from '@aws-amplify/api-graphql';
 import {} from '@headlessui/react';
 import { useEffect } from 'react';
 
-const Articles = withAuthenticator(function Articles({ signOut, user }: WithAuthenticatorProps) {
+const Articles = withAuthenticator(function Articles(
+//   {
+//  signOut, user 
+// }: WithAuthenticatorProps
+) {
   const articles = useAppSelector((state) => state.articles.value);
   const dispatch = useAppDispatch();
 

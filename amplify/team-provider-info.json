@@ -17,6 +17,12 @@
       },
       "api": {
         "portfolio": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2pz853l1m2s9c",
+          "type": "manual"
+        }
       }
     }
   }
