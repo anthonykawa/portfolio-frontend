@@ -23,6 +23,12 @@
           "appId": "d2pz853l1m2s9c",
           "type": "manual"
         }
+      },
+      "function": {
+        "AdminQueriesfe273cae": {
+          "deploymentBucketName": "amplify-portfolio-staging-192732-deployment",
+          "s3Key": "amplify-builds/AdminQueriesfe273cae-672f476f4d78566e4d35-build.zip"
+        }
       }
     }
   }
