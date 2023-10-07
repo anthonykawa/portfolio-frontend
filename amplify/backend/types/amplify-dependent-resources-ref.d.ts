@@ -29,5 +29,11 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     }
+  },
+  "storage": {
+    "s3portfoliostorage6e4803e5": {
+      "BucketName": "string",
+      "Region": "string"
+    }
   }
 }

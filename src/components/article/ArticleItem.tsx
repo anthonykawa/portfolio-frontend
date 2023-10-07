@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Article as ArticleType } from '../../actions/articles';
 
 type ArticleProps = {
@@ -37,7 +38,7 @@ function Article({ article }: ArticleProps) {
               </div>
             </div>
             <div className='text-base font-medium leading-6'>
-              <a href='#' className='text-pink-700 hover:underline dark:text-slate-50' aria-label={`Read &quot;${article.title}&quot;`}>Read more →</a>
+              <Link to={`/articles/${article.id}`} className='text-pink-700 hover:underline dark:text-slate-50' aria-label={`Read &quot;${article.title}&quot;`}>Read more →</Link>
             </div>
           </div>
         </div>

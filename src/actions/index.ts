@@ -3,4 +3,6 @@ export {
   selectArticle,
   selectArticles,
   addArticle,
+  removeArticle,
+  updateArticle,
 } from './articles';

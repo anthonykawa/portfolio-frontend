@@ -1,9 +1,56 @@
+import { useCallback, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import DarkModeToggle from '../darkModeToggle';
-import { NavLink } from 'react-router-dom';
+import TopNav from './TopNav';
+import _ from 'lodash';
 
 function Nav() {
+  const headerRef = useRef<HTMLElement>(null);
+  const location = useLocation();
+  
+  const didScrollPage = useCallback(() => {
+    console.log('didScrollPage');
+    if (window.scrollY > 20) {
+      updateNavTransparency(
+        ['bg-white/95', 'dark:bg-gray-800/95'],
+        ['bg-white/0', 'dark:bg-gray-800/0'],
+      );
+    } else {
+      updateNavTransparency(
+        ['bg-white/0', 'dark:bg-gray-800/0'],
+        ['bg-white/95', 'dark:bg-gray-800/95'],
+      )
+    }
+  }, []);
+
+  const updateNavTransparency = (classesToAdd: string[], classesToRemove: string[]) => {
+    _.forEach(classesToAdd, (classToAdd) => {
+      headerRef.current?.classList.add(classToAdd);
+    });
+    _.forEach(classesToRemove, (classToRemove) => {
+      headerRef.current?.classList.remove(classToRemove);
+    });
+  }
+
+  useEffect(() => {
+    const isHome = location.pathname === '/';
+    if (window.scrollY > 20 || !isHome) {
+      updateNavTransparency(
+        ['bg-white/95', 'dark:bg-gray-800/95'],
+        ['bg-white/0', 'dark:bg-gray-800/0'],
+      );
+    }
+
+    window.addEventListener('scroll', didScrollPage);
+    if (!isHome) {
+      console.log('removing listener');
+      window.removeEventListener('scroll', didScrollPage);
+    }
+    () => window.removeEventListener('scroll', didScrollPage);
+  }, [location.pathname]);
+
   return (
-    <nav className="flex items-center justify-between p-6 lg:px-8 bg-stone-100 dark:bg-zinc-900 drop-shadow-sm" aria-label="Global">
+    <nav ref={headerRef} className={`fixed flex items-center bg-white/0 dark:bg-gray-800/0 justify-between p-6 lg:px-8 drop-shadow-sm w-full transition-all ease-in-out duration-100 z-50 backdrop-blur-sm`} aria-label="Global">
       <div className="flex lg:flex-1">
         <a href="#" className="-m-1.5 p-1.5">
           <span className="sr-only">Your Company</span>
@@ -18,10 +65,10 @@ function Nav() {
           </svg>
         </button>
       </div>
-      <div className="hidden lg:flex lg:gap-x-12 max-w-3xl xl:max-w-5xl mx-auto w-full">
-        <NavLink to='/' className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300">Home</NavLink>
-        <NavLink to='/articles' className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300">Articles</NavLink>
-        <NavLink to='/portfolio' className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300">Portfolio</NavLink>
+      <div className="hidden lg:flex lg:align-middle lg:gap-x-12 max-w-3xl xl:max-w-4xl mx-auto w-full">
+        <TopNav to='/' name='Home' />
+        <TopNav to='/articles' name='Articles' />
+        <TopNav to='/work' name='Work' />
       </div>
       <div className="hidden lg:flex lg:flex-1 lg:justify-end">
         <DarkModeToggle />

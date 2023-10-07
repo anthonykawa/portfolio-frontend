@@ -16,7 +16,8 @@
         "portfolio": {}
       },
       "api": {
-        "portfolio": {}
+        "portfolio": {},
+        "AdminQueries": {}
       },
       "hosting": {
         "amplifyhosting": {
@@ -27,7 +28,7 @@
       "function": {
         "AdminQueriesfe273cae": {
           "deploymentBucketName": "amplify-portfolio-staging-192732-deployment",
-          "s3Key": "amplify-builds/AdminQueriesfe273cae-672f476f4d78566e4d35-build.zip"
+          "s3Key": "amplify-builds/AdminQueriesfe273cae-376e30564f7a3074572f-build.zip"
         }
       }
     }

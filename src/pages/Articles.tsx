@@ -3,40 +3,25 @@ import {
   withAuthenticator, 
   // WithAuthenticatorProps 
 } from '@aws-amplify/ui-react';
-import { API, graphqlOperation } from 'aws-amplify';
-import { listArticles } from '../graphql/queries';
-import { Article } from '../components/article';
+import { ArticleItem } from '../components/article';
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { addArticle } from '../actions';
-import { ListArticlesQuery } from '../API';
-import { GraphQLResult } from '@aws-amplify/api-graphql';
-import {} from '@headlessui/react';
 import { useEffect } from 'react';
+import { fetchArticles } from '../queries';
 
-const Articles = withAuthenticator(function Articles(
-//   {
-//  signOut, user 
-// }: WithAuthenticatorProps
-) {
+const Articles = withAuthenticator(function Articles() {
   const articles = useAppSelector((state) => state.articles.value);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      const articlesData: GraphQLResult<ListArticlesQuery> = (await API.graphql(graphqlOperation(listArticles)) as unknown) as {
-        data: ListArticlesQuery,
-      };
-      const articles = articlesData.data?.listArticles?.items;
+    fetchArticles().then((articles) => {
       _.forEach(articles, (article) => {
         if (article) {
           dispatch(addArticle(article));
         }
       })
-    }
-    fetchArticles();
+    });
   }, []);
-
-  // const articles = useQuery(gql(listArticles));
 
   return (
     <div className='divide-y divide-gray-200 dark:divide-gray-700'>
@@ -46,7 +31,7 @@ const Articles = withAuthenticator(function Articles(
       </div>
       <ul role='list' className='divide-y divide-gray-200 dark:divide-gray-700'>
         {_.map(articles, (article) => {
-          return (<Article key={article.id} article={article} />);
+          return (<ArticleItem key={article.id} article={article} />);
         })}
       </ul>
     </div>

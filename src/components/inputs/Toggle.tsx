@@ -14,7 +14,7 @@ function Toggle(props: ToggleProps) {
   }, [checked, onChange]);
 
   return (
-    <label className="relative inline-flex items-center cursor-pointer">
+    <label className="relative inline-flex items-center cursor-pointer w-32 min-w-full">
       <input
         type="checkbox"
         value=""

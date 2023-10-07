@@ -32,13 +32,27 @@ export const articleSlice = createSlice({
       map.set(action.payload.id, action.payload);
       state.value = [...map.values()];
     },
+    removeArticle: (state, action: PayloadAction<string>) => {
+      state.value = _.filter(state.value, (article) => article.id !== action.payload);
+    },
+    updateArticle: (state, action: PayloadAction<Article>) => {
+      state.value = _.map(state.value, (article) => {
+        if (article.id === action.payload.id) {
+          return {
+            ...action.payload,
+          }
+        }
+        return article;
+      });
+    }
   }
 });
 
-export const { addArticle } = articleSlice.actions;
+export const { addArticle, removeArticle, updateArticle } = articleSlice.actions;
 
 export const selectArticles = (state: RootState) => state.articles.value;
-export const selectArticle = (state: RootState, id: string) => {
+export const selectArticle = (state: RootState, id?: string) => {
+  if (!id) return;
   return _.find(state.articles.value, (article: Article) => article.id === id);
 }
 

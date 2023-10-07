@@ -1,18 +1,19 @@
-type Article @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
+type Article @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}, {allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}]) {
   id: ID!
   title: String!
   description: String!
   body: String
 }
 
-type Author @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
+type Author @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}, {allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}]) {
   id: ID!
   jobTitle: String!
   company: String
 }
 
-type User @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}]) {
+type User @model @auth(rules: [{allow: private, operations: [read]}, {allow: owner}, {allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}]) {
   id: ID!
   email: String!
   imageURI: String
-} 
+}
+ 
