@@ -30,6 +30,9 @@
           "deploymentBucketName": "amplify-portfolio-staging-192732-deployment",
           "s3Key": "amplify-builds/AdminQueriesfe273cae-376e30564f7a3074572f-build.zip"
         }
+      },
+      "storage": {
+        "s3portfoliostorage6e4803e5": {}
       }
     }
   }
