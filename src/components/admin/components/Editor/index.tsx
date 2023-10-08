@@ -82,7 +82,7 @@ const Editor = forwardRef((
             here we add custom filepicker only to Image dialog
           */
           file_picker_types: 'image',
-          images_upload_handler: async (blobInfo, progress) => {
+          images_upload_handler: async (blobInfo) => {
             console.log('filename', blobInfo.filename());
             console.log('blob', blobInfo.blob());
             const { key } = await Storage.put(blobInfo.filename(), blobInfo.blob());
