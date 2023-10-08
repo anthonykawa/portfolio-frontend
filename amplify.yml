@@ -3,12 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install
-        - amplify init
+        - yarn install
+        - amplify init --yes
         - amplify env pull
     build:
       commands:
-        - npm run build
+        - yarn run build
   artifacts:
     baseDirectory: build
     files:
