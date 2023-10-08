@@ -12,18 +12,14 @@
       "AmplifyAppId": "d2pz853l1m2s9c"
     },
     "categories": {
-      "auth": {
-        "portfolio": {}
-      },
-      "api": {
-        "portfolio": {},
-        "AdminQueries": {}
-      },
       "hosting": {
         "amplifyhosting": {
           "appId": "d2pz853l1m2s9c",
           "type": "manual"
         }
+      },
+      "auth": {
+        "portfolio": {}
       },
       "function": {
         "AdminQueriesfe273cae": {
