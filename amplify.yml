@@ -3,13 +3,13 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn install
-        - amplify pull --app d208qklvbepywn --envName staging --yes
+        - npm install
+        - amplify pull --app d208qklvbepywn --envName staging --yes 
     build:
       commands:
-        - yarn run build
+        - npm run build
   artifacts:
-    baseDirectory: build
+    baseDirectory: dist
     files:
       - '**/*'
   cache:
