@@ -9,10 +9,8 @@ import { Amplify } from 'aws-amplify';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css'
 
-import awsconfig from './amplifyconfiguration.json';
-Amplify.configure({
-  ...awsconfig,
-});
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
