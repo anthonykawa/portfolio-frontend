@@ -4,8 +4,7 @@ frontend:
     preBuild:
       commands:
         - yarn install
-        - amplify init --yes
-        - amplify env pull
+        - amplify pull --app d208qklvbepywn --envName staging
     build:
       commands:
         - yarn run build
