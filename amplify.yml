@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm cache clean
+        - npm cache clean --force
         - npm install
         - amplify init
         - amplify env pull
